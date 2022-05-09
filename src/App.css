@@ -3,7 +3,10 @@
   background-color: #121213;
 }
 
-
+.title {
+  font-family: Helvetica;
+  font-weight: bold;
+}
 
 .App-header {
   background-color: #121213;
@@ -16,13 +19,19 @@
   color: white;
 }
 
+.footer {
+  font-size: calc(4px + 2vmin);
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
 .board {
   margin-top:20px;
   width: auto;
   height: auto;
 }
 
-.cell:not(.revealed) {
+.cell:not(.revealed):not(.flagged) {
   /* display: inline-block; */
   width:40px;
   height:40px;
@@ -47,8 +56,11 @@
   cursor:pointer;
 }
 
-.hidden:not(.flagged):hover {
+.hidden:not(.flagged):not(.gameover):hover {
   background-color: #212122;
+}
+
+.hidden:hover {
   cursor:pointer;
 }
 
@@ -57,7 +69,13 @@
 }
 
 .flagged {
-  background-color: #775151;
+  width:36px;
+  height:36px;
+  margin:2px;
+  background-color: rgb(106, 28, 28);
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .row {
