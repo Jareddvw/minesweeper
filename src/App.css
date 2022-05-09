@@ -1,6 +1,9 @@
 .App {
   text-align: center;
   background-color: #121213;
+  margin:0;
+  width:auto;
+  min-width: 1200px;
 }
 
 .title {
@@ -9,6 +12,7 @@
 }
 
 .App-header {
+  width:auto;
   background-color: #121213;
   min-height: 100vh;
   display: flex;

@@ -155,7 +155,8 @@ const Board = () => {
                                             id={rowIndex + "," + colIndex}
                                             key={colIndex}
                                             onClick={() => revealCell(rowIndex, colIndex)}
-                                            onContextMenu = {(e) => toggleFlag(e, rowIndex, colIndex)}>
+                                            onContextMenu = {(e) => toggleFlag(e, rowIndex, colIndex)}
+                                            onDoubleClick = {(e) => toggleFlag(e, rowIndex, colIndex)}>
                                     {(board[rowIndex][colIndex].hidden === true) ? 
                                         ((board[rowIndex][colIndex].flagged === true) ?
                                             "F" : "") :
@@ -174,7 +175,7 @@ const Board = () => {
                     {/* <button className="button" onClick={revealAll}>REVEAL ALL</button>
                     <button className="button" onClick={showAllBombs}>SHOW BOMBS</button> */}
                 </div>
-                <div style={{display:'flex', alignItems:'center', justifyContent:"center"}}>
+                <div style={{display:'flex', flexWrap:'wrap', justifyContent:'center'}}>
                     <button className="button" onClick={() => {
                         setBoardHeight(9); setBoardLength(9); setNumBombs(10)
                     }}>BEGINNER</button>
