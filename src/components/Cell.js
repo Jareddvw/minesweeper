@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Cell = () => {
+const Cell = (contents) => {
   return (
-    <div className="cell"></div>
+    <div className="cell">{contents}</div>
   )
 }
 

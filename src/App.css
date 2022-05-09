@@ -1,6 +1,9 @@
 .App {
   text-align: center;
+  background-color: #121213;
 }
+
+
 
 .App-header {
   background-color: #121213;
@@ -14,27 +17,52 @@
 }
 
 .board {
-  width: 600px;
-  height: 600px;
+  margin-top:20px;
+  width: auto;
+  height: auto;
 }
 
-.cell {
-  display: inline-block;
-  width:50px;
-  height:50px;
-  margin: 5px 5px 5px 5px;
+.cell:not(.revealed) {
+  /* display: inline-block; */
+  width:40px;
+  height:40px;
   outline:2px solid rgb(58,58,60);
+  outline-offset:-5px;
   background-color: #121213;
-  transition-duration: 200ms;
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.cell:hover {
-  background-color: rgb(124, 124, 124);
+.revealed {
+  width:36px;
+  height:36px;
+  margin:2px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flagged:hover {
   cursor:pointer;
 }
 
+.hidden:not(.flagged):hover {
+  background-color: #212122;
+  cursor:pointer;
+}
+
+.revealed:hover {
+  cursor:pointer;
+}
+
+.flagged {
+  background-color: #775151;
+}
+
 .row {
-  height:60px;
+  height:auto;
+  display:flex;
 }
 
 .button {
@@ -42,7 +70,10 @@
   height: 50px;
   width: 200px;
   border-radius:5px;
-  margin-top: 30px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  margin-left: 20px;
+  margin-right:20px;
   transition-duration: 200ms;
   color:white;
   font-family: Helvetica, sans-serif;
@@ -58,4 +89,46 @@
 
 .button:target {
   background-color: rgb(81, 81, 81);
+}
+
+/* styling if empty cell is no longer hidden */
+.\30-false {
+  background-color: #212122;
+}
+
+.\31-false {
+  background-color: #1f2136;
+}
+
+.\32-false {
+  background-color: #1f3622;
+}
+
+.\33-false {
+  background-color: #361f1f;
+}
+
+.\34-false {
+  background-color: #221f36;
+}
+
+.\35-false {
+  background-color: #361f26;
+}
+
+.\36-false {
+  background-color: #1f3236;
+}
+
+.\37-false {
+  background-color: #2e1f36;
+}
+
+.\38-false {
+  background-color: #1b1f25;
+}
+
+.\*-false {
+  background-color: white;
+  border-radius: 50%;
 }
