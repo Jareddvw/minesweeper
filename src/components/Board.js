@@ -88,14 +88,12 @@ const Board = () => {
                 }
             }
         }
-        console.log(numFlagged)
         if (numFlagged === NUMBOMBS) {
             checkGameWon(rowIndex, colIndex)
         }
     }
 
     const checkGameWon = (a, b) => {
-        console.log("checking for win...")
         for (let i=1; i < BOARDHEIGHT + 1; i += 1) {
             for (let j=1; j < BOARDLENGTH + 1; j += 1) {
                 if (board[i][j].hidden === true && 
@@ -106,16 +104,13 @@ const Board = () => {
                                 continue
                             }
                         } else {
-                            console.log(`hidden square, ${board[i][j].value}, i:${i}, j:${j}`) 
                             return;
                         }
                 } else if (board[i][j].flagged === true && !board[i][j].isBomb) {
-                    console.log(`wrong cell flagged, ${board[i][j].value}, i:${i}, j:${j}`)
                     return;
                 }
             }
         }
-        console.log("you win!")
         setGameWon(true)
         setGameOver(true)
     }
