@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import newBoard from './newBoard'
+import newBoard from '../utils/newBoard'
 
 // All the game logic is handled here, other than creating the initial board.
 const Board = () => {
@@ -14,6 +14,9 @@ const Board = () => {
     const [gameOver, setGameOver] = useState(false)
     const [numFlagged, setNumFlagged] = useState(0)
     const [gameWon, setGameWon] = useState(false)
+
+    const [mobileVersion, setToMobile] = useState(false)
+    const [darkTheme, setTheme] = useState(true)
 
     useEffect(() => {
         resetBoard()
@@ -48,7 +51,7 @@ const Board = () => {
         let boardCopy = JSON.parse(JSON.stringify(board))
         for (let i=1; i < BOARDHEIGHT + 1; i += 1) {
             for (let j=1; j < BOARDLENGTH + 1; j += 1) {
-                if (boardCopy[i][j].isBomb) {
+                if (boardCopy[i][j].isBomb && boardCopy[i][j].flagged === false) {
                     boardCopy[i][j].hidden = false
                 }
             }
@@ -100,8 +103,8 @@ const Board = () => {
                     board[i][j].flagged === false && 
                     !board[i][j].isBomb) {
                         if (a && b) {
-                            if (i == 1 && j == b) {
-                                continue
+                            if (i == a && j == b) {
+                                continue;
                             }
                         } else {
                             return;
@@ -134,7 +137,8 @@ const Board = () => {
         return (<div>Loading...</div>)
     } else {
         return (
-            <>
+            <div className="App">
+            <header className="App-header">
             <p></p>
             <div className="title">{(gameOver ? (gameWon ? "You win!" : "Game over :P") : "MINESWEEPER")}</div>
                 <div className='board'>
@@ -146,6 +150,7 @@ const Board = () => {
                                 return (<div className={`cell ${board[rowIndex][colIndex].value}-${board[rowIndex][colIndex].hidden} 
                                                             ${(board[rowIndex][colIndex].hidden) ? "hidden" : "revealed"}
                                                             ${(board[rowIndex][colIndex].flagged) ? "flagged" : "unflagged"}
+                                                            ${(darkTheme) ? "dark" : "light"}
                                                             ${(gameOver) ? "gameover" : ""}`}
                                             id={rowIndex + "," + colIndex}
                                             key={colIndex}
@@ -180,9 +185,18 @@ const Board = () => {
                     <button className="button" onClick={() => {
                         setBoardHeight(16); setBoardLength(30); setNumBombs(99)
                     }}>EXPERT</button>
+                    <button className="button" onClick={() => {
+                        setBoardHeight(16); setBoardLength(30); setNumBombs(50)
+                    }}>EASIER</button>
+                </div>
+                <div style={{display:'flex', alignItems:'center', justifyContent:"center"}}>
+                    <button className="button" onClick={() => setTheme(!darkTheme)}>
+                        {`THEME: ${(darkTheme) ? "DARK" : "LIGHT"}`}
+                    </button>
                 </div>
                 <div className='footer'></div>
-            </>
+            </header>
+            </div>
   )
 }}
 

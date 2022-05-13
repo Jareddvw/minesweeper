@@ -76,7 +76,7 @@
   width:36px;
   height:36px;
   margin:2px;
-  background-color: rgb(106, 28, 28);
+  background-color: rgb(131, 32, 32);
   display:flex;
   align-items: center;
   justify-content: center;
@@ -119,38 +119,39 @@
 }
 
 .\31-false {
-  background-color: #1f2136;
+  background-color: #3b3f66;
 }
 
 .\32-false {
-  background-color: #1f3622;
+  background-color: #3a6640;
 }
 
 .\33-false {
-  background-color: #361f1f;
+  background-color: #673b3b;
 }
 
 .\34-false {
-  background-color: #221f36;
+  background-color: #453764;
 }
 
 .\35-false {
-  background-color: #361f26;
+  background-color: #653b47;
 }
 
 .\36-false {
-  background-color: #1f3236;
+  background-color: #477179;
 }
 
 .\37-false {
-  background-color: #2e1f36;
+  background-color: #5e406e;
 }
 
 .\38-false {
-  background-color: #1b1f25;
+  background-color: #4c5869;
 }
 
 .\*-false {
-  background-color: white;
+  color: rgba(255, 255, 255, 0);
+  background-color: rgb(141, 141, 141);
   border-radius: 50%;
 }
