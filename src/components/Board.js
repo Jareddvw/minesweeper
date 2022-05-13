@@ -29,6 +29,9 @@ const Board = () => {
     }, [numFlagged])
 
     const resetBoard = () => {
+        if (BOARDHEIGHT == 1 && BOARDLENGTH == 1) {
+            setNumBombs(Math.round(Math.random()))
+        }
         let newestBoard = newBoard(BOARDLENGTH, BOARDHEIGHT, NUMBOMBS);
         setGameOver(false)
         setGameWon(false)
@@ -140,7 +143,7 @@ const Board = () => {
             <div className="App">
             <header className="App-header">
             <p></p>
-            <div className="title">{(gameOver ? (gameWon ? "You win!" : "Game over :P") : "MINESWEEPER")}</div>
+            <div className="title">{(gameOver ? (gameWon ? "YOU WIN!" : "GAME OVER :P") : "MINESWEEPER")}</div>
                 <div className='board'>
                     {board.map((row, rowIndex) => {
                         if ((rowIndex) > 0 && rowIndex < BOARDHEIGHT + 1) {
@@ -185,14 +188,16 @@ const Board = () => {
                     <button className="button" onClick={() => {
                         setBoardHeight(16); setBoardLength(30); setNumBombs(99)
                     }}>EXPERT</button>
-                    <button className="button" onClick={() => {
-                        setBoardHeight(16); setBoardLength(30); setNumBombs(50)
-                    }}>EASIER</button>
                 </div>
                 <div style={{display:'flex', alignItems:'center', justifyContent:"center"}}>
-                    <button className="button" onClick={() => setTheme(!darkTheme)}>
-                        {`THEME: ${(darkTheme) ? "DARK" : "LIGHT"}`}
-                    </button>
+                    <button className="button" onClick={() => {
+                        setBoardHeight(16); setBoardLength(30); setNumBombs(50)
+                    }}>RELAXED</button>
+                    <button className="button" onClick={() => {
+                        setBoardHeight(Math.floor(1)); 
+                        setBoardLength(Math.floor(1)); 
+                        setNumBombs(Math.round(Math.random()))
+                    }}>ROULETTE</button>
                 </div>
                 <div className='footer'></div>
             </header>
