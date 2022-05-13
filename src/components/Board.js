@@ -29,10 +29,12 @@ const Board = () => {
     }, [numFlagged])
 
     const resetBoard = () => {
-        if (BOARDHEIGHT == 1 && BOARDLENGTH == 1) {
-            setNumBombs(Math.round(Math.random()))
-        }
         let newestBoard = newBoard(BOARDLENGTH, BOARDHEIGHT, NUMBOMBS);
+        if (BOARDHEIGHT == 1 && BOARDLENGTH == 1) {
+            let newNumBombs = Math.round(Math.random())
+            newestBoard = newBoard(BOARDLENGTH, BOARDHEIGHT, newNumBombs);
+            setNumBombs(newNumBombs);
+        }
         setGameOver(false)
         setGameWon(false)
         setNumFlagged(0)

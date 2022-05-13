@@ -9,9 +9,33 @@
 .title {
   font-family: Helvetica;
   font-weight: bold;
+
+  width: 22ch;
+  animation: typing 2s steps(22), blink .5s step-end 2 alternate;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+@keyframes blink {
+  0% {
+    border-right: 3px transparent;
+  }
+  50% {
+    border-right: 3px solid;
+  }
+  100% {
+    border-right: 3px transparent;
+  }
 }
 
 .App-header {
+  display: grid;
+  place-items: center;
   width:auto;
   background-color: #121213;
   min-height: 100vh;
@@ -52,8 +76,14 @@
   height:36px;
   margin:2px;
   display:flex;
+  font-weight:bold;
   align-items: center;
   justify-content: center;
+}
+
+.revealed:not(.\30-false) {
+  animation-name: bounce;
+  animation-duration: 0.125s;
 }
 
 .flagged:hover {
@@ -80,6 +110,7 @@
   display:flex;
   align-items: center;
   justify-content: center;
+  font-weight:bold;
 }
 
 .row {
@@ -113,6 +144,24 @@
   background-color: rgb(81, 81, 81);
 }
 
+@keyframes bounce {
+  0% {
+    width:36px;
+    height:36px;
+    margin:2px;
+  }
+  50% {
+    width:39px;
+    height:39px;
+    margin:0.5px;
+  }
+  100% {
+    width:36px;
+    height:36px;
+    margin:2px;
+  }
+}
+
 /* styling if empty cell is no longer hidden */
 .\30-false {
   background-color: #212122;
@@ -123,11 +172,11 @@
 }
 
 .\32-false {
-  background-color: #3a6640;
+  background-color: #487f4f;
 }
 
 .\33-false {
-  background-color: #673b3b;
+  background-color: #7b4444;
 }
 
 .\34-false {
@@ -152,6 +201,7 @@
 
 .\*-false {
   color: rgba(255, 255, 255, 0);
-  background-color: rgb(141, 141, 141);
+  background-color: rgb(186, 186, 186);
+  /* background-color: rgb(177, 177, 177); */
   border-radius: 50%;
 }
