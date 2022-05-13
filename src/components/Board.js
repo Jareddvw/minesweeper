@@ -110,6 +110,8 @@ const Board = () => {
                         if (a && b) {
                             if (i == a && j == b) {
                                 continue;
+                            } else {
+                                return;
                             }
                         } else {
                             return;
