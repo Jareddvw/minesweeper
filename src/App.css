@@ -146,9 +146,9 @@
 
 @keyframes bounce {
   0% {
-    width:36px;
-    height:36px;
-    margin:2px;
+    width:35px;
+    height:35px;
+    margin:2.5px;
   }
   50% {
     width:39px;
