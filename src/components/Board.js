@@ -17,6 +17,7 @@ const Board = () => {
 
     const [mobileVersion, setToMobile] = useState(false)
     const [darkTheme, setTheme] = useState(true)
+    const [flagButton, setFlagButton] = useState(false)
 
     useEffect(() => {
         resetBoard()
@@ -130,14 +131,14 @@ const Board = () => {
         if (gameOver) {
             return
         }
-        let boardCopy = JSON.parse(JSON.stringify(board))
-        boardCopy[i][j].flagged = !boardCopy[i][j].flagged
-        setBoard(boardCopy)
-        if (boardCopy[i][j].flagged === true) {
+        if (board[i][j].flagged === false) {
             setNumFlagged(numFlagged + 1)
         } else {
             setNumFlagged(numFlagged - 1)
         }
+        let boardCopy = JSON.parse(JSON.stringify(board))
+        boardCopy[i][j].flagged = !boardCopy[i][j].flagged
+        setBoard(boardCopy)
     }
 
     if (board === [[]]) {
@@ -161,7 +162,9 @@ const Board = () => {
                                                             ${(gameOver) ? "gameover" : ""}`}
                                             id={rowIndex + "," + colIndex}
                                             key={colIndex}
-                                            onClick={() => revealCell(rowIndex, colIndex)}
+                                            onClick={(flagButton === true) ? 
+                                                (e) => toggleFlag(e, rowIndex, colIndex) : 
+                                                () => revealCell(rowIndex, colIndex)}
                                             onContextMenu = {(e) => toggleFlag(e, rowIndex, colIndex)}
                                             onDoubleClick = {(e) => toggleFlag(e, rowIndex, colIndex)}>
                                     {(board[rowIndex][colIndex].hidden === true) ? 
@@ -179,6 +182,8 @@ const Board = () => {
                 </div>
                 <div style={{display:'flex', alignItems:'center', justifyContent:"center"}}>
                     <button className="button" onClick={resetBoard}>NEW GAME</button>
+                    {/* <button className="flagged cell hidden dark flagButton"
+                        onClick = {() => setFlagButton(!flagButton)}>F</button> */}
                     {/* <button className="button" onClick={revealAll}>REVEAL ALL</button>
                     <button className="button" onClick={showAllBombs}>SHOW BOMBS</button> */}
                 </div>

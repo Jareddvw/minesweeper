@@ -135,6 +135,21 @@
   font-size: 14pt;
 }
 
+.flagButton {
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  border:none;
+  font-size: 14pt;
+  border-radius:5px;
+  color:white;
+}
+
+/* idea: flag Button will be grey unless pressed, otherwise red. */
+
+.flagButton:hover {
+  background-color: rgb(116, 29, 29);
+}
+
 .button:hover {
   background-color: rgb(124, 124, 124);
   cursor: pointer;
