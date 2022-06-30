@@ -1,6 +1,21 @@
+:root {
+  --main-bg-color:#121213;
+  --1-color: #535ec0;
+  --2-color: #69b562;
+  --3-color: #ab5454;
+  --4-color: #453764;
+  --5-color: #653b47;
+  --6-color: #477179;
+  --7-color: #5e406e;
+  --8-color: #4c5869;
+  --bomb-color: rgba(255, 255, 255, 0);
+  --bomb-bg-color: rgb(186, 186, 186);
+  --flagged-color:rgb(195, 34, 34);
+}
+
 .App {
   text-align: center;
-  background-color: #121213;
+  background-color: var(--main-bg-color);
   margin:0;
   width:auto;
   min-width: 1200px;
@@ -106,7 +121,7 @@
   width:36px;
   height:36px;
   margin:2px;
-  background-color: rgb(131, 32, 32);
+  background-color: var(--flagged-color);
   display:flex;
   align-items: center;
   justify-content: center;
@@ -183,40 +198,40 @@
 }
 
 .\31-false {
-  background-color: #3b3f66;
+  background-color: var(--1-color);
 }
 
 .\32-false {
-  background-color: #487f4f;
+  background-color: var(--2-color)
 }
 
 .\33-false {
-  background-color: #7b4444;
+  background-color: var(--3-color)
 }
 
 .\34-false {
-  background-color: #453764;
+  background-color: var(--4-color)
 }
 
 .\35-false {
-  background-color: #653b47;
+  background-color: var(--5-color)
 }
 
 .\36-false {
-  background-color: #477179;
+  background-color: var(--6-color)
 }
 
 .\37-false {
-  background-color: #5e406e;
+  background-color: var(--7-color)
 }
 
 .\38-false {
-  background-color: #4c5869;
+  background-color: var(--8-color)
 }
 
 .\*-false {
-  color: rgba(255, 255, 255, 0);
-  background-color: rgb(186, 186, 186);
+  color: var(--bomb-color);
+  background-color: var(--bomb-bg-color);
   /* background-color: rgb(177, 177, 177); */
   border-radius: 50%;
 }
